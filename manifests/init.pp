@@ -121,14 +121,14 @@ class nginxboss(
 
 # Remove default installed files from NGINX package
   file {
-	[
-	  '/usr/share/nginx/html/404.html',
-	  '/usr/share/nginx/html/50x.html',
-	  '/usr/share/nginx/html/nginx-logo.png',
-	  '/usr/share/nginx/html/poweredby.png',
-	]:
-      	  ensure  => absent,
-      	  require => Package['nginx'],
+        [
+          '/usr/share/nginx/html/404.html',
+          '/usr/share/nginx/html/50x.html',
+          '/usr/share/nginx/html/nginx-logo.png',
+          '/usr/share/nginx/html/poweredby.png',
+        ]:
+          ensure  => absent,
+          require => Package['nginx'],
   }
 
   file { '/etc/nginx/conf.d/default.conf':
