@@ -11,8 +11,8 @@
 # Copyright 2014 Tim Ski
 #
 class nginxboss(
-  $nginx_ver   = '1.0.15-11.el6',
-  $nginx_port  = '8000',
+  $nginx_ver    = '1.0.15-11.el6',
+  $nginx_port   = '8000',
   $nginx_user   = 'nginx',
   $nginx_group  = 'nginx',){
 
