@@ -10,3 +10,4 @@ def setup_nginx():
     with cd ('/tmp'):
 	run('git clone https://github.com/marshyski/nginxboss.git')
 	sudo('puppet apply --modulepath=/tmp -e "include nginxboss"')
+	sudo('rm -rf nginxboss')
