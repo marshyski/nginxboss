@@ -12,24 +12,22 @@
 #
 class nginxboss(
   $nginx_ver    = '1.0.15-11.el6',
-  $nginx_port   = '8000',
+  $nginx_port   = '80',
   $nginx_user   = 'nginx',
   $nginx_group  = 'nginx',){
-
-# Stage custom index.html in root directory
-  file { '/usr/share/nginx/html/index.html':
-    ensure  => present,
-    owner   => $nginx_user,
-    group   => $nginx_group,
-    mode    => '0644',
-    content => template('nginxboss/index.html'),
-    require => Package['nginx'],
-  }
 
 # Install NGINX from EPEL
   package { 'nginx':
     ensure  => $nginx_ver,
   }
+
+# Ensure DOC ROOT is present
+file { '/app':
+    ensure => directory,
+    owner  => $nginx_user,
+    group  => $nginx_group,
+    mode   => '0775',
+}
 
 # Manage the security limits
   file { '/etc/security/limits.d/nginx.conf':
@@ -122,6 +120,7 @@ class nginxboss(
 # Remove default installed files from NGINX package
   file {
         [
+	  '/usr/share/nginx/html/index.html',
           '/usr/share/nginx/html/404.html',
           '/usr/share/nginx/html/50x.html',
           '/usr/share/nginx/html/nginx-logo.png',
