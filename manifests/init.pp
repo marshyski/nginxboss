@@ -120,7 +120,7 @@ file { '/app':
 # Remove default installed files from NGINX package
   file {
         [
-	  '/usr/share/nginx/html/index.html',
+          '/usr/share/nginx/html/index.html',
           '/usr/share/nginx/html/404.html',
           '/usr/share/nginx/html/50x.html',
           '/usr/share/nginx/html/nginx-logo.png',
