@@ -77,6 +77,12 @@ http {
       location ~* (?:^|/)\. {
           deny all;
       }
+      
+      location = /(.git|.svn) {
+          deny all;
+          log_not_found off;
+          access_log off;
+      }
 
       location ~* (?:\.(?:bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$ {
           deny all;
