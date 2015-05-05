@@ -78,7 +78,7 @@ http {
           deny all;
       }
       
-      location = /(.git|.svn) {
+      location = /(.git|.svn|README.md|README) {
           deny all;
           log_not_found off;
           access_log off;
